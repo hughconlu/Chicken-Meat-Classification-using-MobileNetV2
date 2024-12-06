@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 0 auto 10px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .prediction-image {
+            display: block;
+            margin: 30px auto 0;
+            max-width: 100%;
+            height: auto;
+            image-orientation: from-image;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chicken Classifier</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*">
+            <input type="submit" value="Upload">
+        </form>
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+        {% if image %}
+            <img class="prediction-image" src="{{ image }}" alt="Prediction Image">
+        {% endif %}
+    </div>
+</body>
+</html>
